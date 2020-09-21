@@ -1,0 +1,42 @@
+{% extends 'base_order.html' %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'sxsd/order/css/order_detail.css' %}">
+{% endblock %}
+{% block title %}
+    {{ block.super }}
+    订单详情
+{% endblock %}
+
+{% block header %}
+    {{ block.super }}
+    <header></header>
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <div class="container">
+    <span style="font-size: 20px;padding-top: 10px">订单编号:{{ o_time }}</span>
+        <hr>
+        {% for ord in order.sxsdordergoods_set.all %}
+            <div class="menuList">
+                <a href="">
+                    <img src="/static{{ ord.og_goods.productimg }}" alt="">
+                    <p style="color: #1a1a1a">{{ ord.og_goods.productlongname }}</p>
+                    <p class="presentPrice">{{ ord.og_goods.price }}</p>
+                </a>
+                <section>
+                    <span>{{ ord.og_c_goods_num }}</span>
+                </section>
+            </div>
+        {% endfor %}
+        <div class="total_price">
+            总计:
+            <span id="total_price">{{ order.o_total_price }}</span>
+        </div>
+        <a href="{% url 'sxsdorder:testPay' %}?total_price={{ order.o_total_price }}" class="btn btn-block btn-success">支付</a>
+    </div>
+{% endblock %}
+

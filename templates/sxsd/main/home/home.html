@@ -1,0 +1,128 @@
+{% extends 'base_main.html' %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'sxsd/main/home/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'sxsd/main/home/css/swiper.css' %}">
+
+{% endblock %}
+
+{% block title %}
+    首页
+{% endblock %}
+
+
+{#<div class="swiper-container">#}
+{#    <div class="swiper-wrapper">#}
+{#        <div class="swiper-slide">Slide 1</div>#}
+{#        <div class="swiper-slide">Slide 2</div>#}
+{#        <div class="swiper-slide">Slide 3</div>#}
+{#    </div>#}
+{#    <!-- 如果需要分页器 -->#}
+{#    <div class="swiper-pagination"></div>#}
+
+{#</div>#}
+
+
+{% block content %}
+    {{ block.super }}
+    <div id="home">
+        {#  轮播图  #}
+        <div class="swiper-container" id="topSwiper">
+            <div class="swiper-wrapper">
+                {% for wheel in wheels %}
+                    <a class="swiper-slide" href="">
+                        <img  src="/static{{ wheel.img }}" alt="">
+                    </a>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        {#  菜单  #}
+        <div class="topMenu">
+            <nav>
+                <ul>
+                    {% for nav in navs %}
+                        <li>
+                            <img src="/static{{ nav.img }}" alt="">
+                            <span>{{ nav.name }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    
+        <div id="swiperMenu" class="swiper-container">
+            <ul class="swiper-wrapper">
+                {% for mustbuy in mustbuys %}
+                    <li class="swiper-slide">
+                        <img src="/static{{ mustbuy.img }}" alt="">
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    
+        <div class="mainInfo">
+            {% for mainshow in mainshows %}
+                <section>
+                    <h3>
+                        <p style="font-size: 16px">{{ mainshow.name }}</p>
+                        <a href="">更多>>></a>
+                        <span></span>
+                    </h3>
+
+                    <div>
+                        <a href="">
+                            <img src="/static{{ mainshow.img }}" alt="">
+                        </a>
+                    </div>
+
+                    <ul>
+                        <li>
+                            <a href="">
+                                <img src="/static{{ mainshow.img1 }}" alt="">
+                                <p class="description">{{ mainshow.longname1 }}</p>
+                                <span>￥{{ mainshow.price1 }}</span>
+                                <s>￥{{ mainshow.marketprice1 }}</s>
+                            </a>
+                            <button>
+                                <span>+</span>
+                            </button>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="/static{{ mainshow.img2 }}" alt="">
+                                <p class="description">{{ mainshow.longname2 }}</p>
+                                <span>￥{{ mainshow.price2 }}</span>
+                                <s>￥{{ mainshow.marketprice2 }}</s>
+                            </a>
+                            <button>
+                                <span>+</span>
+                            </button>
+                        </li>
+                        <li>
+                            <a href="">
+                                <img src="/static{{ mainshow.img3 }}" alt="">
+                                <p class="description">{{ mainshow.longname3 }}</p>
+                                <span>￥{{ mainshow.price3 }}</span>
+                                <s>￥{{ mainshow.marketprice3 }}</s>
+                            </a>
+                            <button >
+                                <span>+</span>
+                            </button>
+                        </li>
+                    </ul>
+                </section>
+            {% endfor %}
+        </div>
+    
+    </div>
+{% endblock %}
+
+{% block ext_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'sxsd/main/home/js/swiper.jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'sxsd/main/home/js/swiper.js' %}"></script>
+    <script type="text/javascript" src="{% static 'sxsd/main/home/js/home.js' %}"></script>
+{% endblock %}

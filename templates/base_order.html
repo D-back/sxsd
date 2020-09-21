@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'sxsd/order/css/order.css' %}">
+{% endblock %}
+
+{% block title %}
+    {{ block.super }}
+{% endblock %}
+
+
+{% block header %}
+    {{ block.super }}
+    <header></header>
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+{% endblock %}

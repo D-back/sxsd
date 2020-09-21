@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block ext_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'sxsd/main/css/main.css' %}">
+{% endblock %}
+
+{% block header %}
+    {{ block.super }}
+    <header></header>
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+{% endblock %}
+
+{% block ext_js %}
+    {{ block.super }}
+    <script type="text/javascript" src="{% static 'sxsd/user/js/md5.js' %}"></script>
+{% endblock %}
